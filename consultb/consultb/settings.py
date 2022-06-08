@@ -16,7 +16,7 @@ import os
 from django.contrib.messages import constants as mensajes_de_error
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = str(Path(__file__).resolve().parent.parent)
 
 
 # Quick-start development settings - unsuitable for production
