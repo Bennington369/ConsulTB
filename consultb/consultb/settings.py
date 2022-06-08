@@ -141,7 +141,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-str(MEDIA_ROOT)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 MESSAGE_TAGS={
     mensajes_de_error.DEBUG: 'debug',
