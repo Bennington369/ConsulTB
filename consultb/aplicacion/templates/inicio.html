@@ -1,0 +1,52 @@
+{% extends "base2.html" %}
+
+{% block contenido %}
+<div class="container col-12 offset-col-2 mb-5 mt-2">
+
+<div class="card">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Perfiles que has registrado</h4>
+        <a href="{% url 'perfil'%}"><button type="submit" class="btn btn-success">Crear nuevo perfil</button></a>
+    </div>
+</div>
+
+<table class="table table-dark table-hover table-sm table-responsive-sm table-bordered">
+    <thead>
+        <tr>
+          
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% if perfiles %}
+        {% for perfil in perfiles %}
+        <tr>
+            
+            <td>{{perfil.nomEstable}}</td>
+            <td>{{perfil.telefono}}</td>
+            
+            <td class="text-center"><a name="" id="" class="btn btn-danger" href="{% url 'borrar' perfil.id  %}" role="button">Borrar</a> </td>
+
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+    
+</div>
+
+    {% else %}
+
+   
+        <div class="alert alert-warning" role="warning">
+        AÚN NO TIENES NINGÚN ESTABLECIMIENTO REGISTRADO
+        </dOv>
+    {% endif %}
+{% endblock %}

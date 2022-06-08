@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block titulo %} Ingreso {% endblock %}
+{% block contenido %}
+<div class="col-8 offset-2 containerxdxd">
+  <form method="POST" action=""> {% csrf_token %}
+   
+    <div class="card container mt-5 pt-2">
+      <div class="card-header">INGRESAR</div>
+      <div class="card-body">
+
+        {% if messages %}
+
+
+        {% for mensaje in messages %}
+
+        <div class="alert alert-danger " role="alert">
+          {{mensaje}}
+          </div>
+
+        {% endfor %}
+
+        {% endif %}
+
+        <div class="mb-4 container">
+          <label class="form-label">Usuario:</label>
+          <p></p>
+          {{ form.username}}
+        </div>
+        <div class="mb-3 container">
+          <label class="form-label">Contraseña:</label>
+          <p></p>
+          {{ form.password}}
+        </div>
+      
+
+
+      
+      <div class="card-footer">
+        <input type="hidden" name="next" value="{{ next }}">
+        <div class="d-grid" gap-2 d-md-block>
+          <button class="btn btn-primary" type="submit">Ingresar</button>
+          <a class="btn btn-info" href="/">Cancelar</a>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="color:black ;">Información</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body  container">
+                
+                
+
+                  <!-- <label for="nombre"style="color:black ;">Nombre:</label>
+                  <input type="text" id="nombre"><br><br>
+                  <label for="correo" style="color:black ;">Correo:</label>
+                  <input type="text" id="correo"> -->
+                  <p style="color:black ;">Para pedir tu contraseña por favor contactanos por el siguiente número: 2741173325 colocando tu nombre completo y correo electronico con el que estas registrado</p>
+              
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a href="{% url 'login' %}"><button type="button" class="btn btn-primary">Aceptar</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <a href="" id="emailHelp" class="form-text text-muted text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal">¿Olvidaste tu contraseña?</a>
+
+      </div>
+      </div>
+    </div>
+  </form>
+</div> 
+{% endblock %}

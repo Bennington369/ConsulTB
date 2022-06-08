@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block titulo %} Resultados {% endblock %}
+{% block contenido %}
+
+<hr>
+<h3 class="h2resultado">RESULTADOS DE LA BUSQUEDA DE: "{{query}}"</h3>
+<hr>
+ 
+
+<div class="container">
+    <div class="row">
+        {% if tiendas %}
+        {% for tienda in tiendas %}
+        <div class="col-sm-8 col-md-4 col-xs-12">
+          
+            <div class="card text-center border-info">
+              
+                <div class="card">
+
+                    <a href="{% url 'muestraperfil' tienda.id %}"><img src={{tienda.imagen.url}} class="card-img-top"></a>
+                    <div class="card-body card-bodyxd">
+                    <h5 class="card-title">{{tienda.categoria}} "{{tienda.nomEstable}}"</h5>
+                    <p class="card-text">{{tienda.descripcion_Estable}} </p>
+                    <a href="{% url 'muestraperfil' tienda.id %}" class="btn btn-primary">Ir a perfil</a>
+                    </div>
+                </div>
+
+
+              
+    
+
+
+        </div>
+  
+       
+    </div>
+    {% endfor %}
+
+    {% else %}
+<div class="container">
+    <div class="alert alert-danger" role="alert">
+    NO HAY ESTABLECIMIENTOS CON ESTE RESULTADO
+    </div>
+    <p>Asegurate de haber escrito bien tu busqueda</p>
+
+    {% endif %}
+    </div>
+    
+</div>
+</div>
+
+{% endblock %}
+<!-- 
+    {% if tiendas %}
+        {% for tienda in tiendas %}
+            
+        <div class="flexcard">
+        <div class="card" style="width: 18rem;">
+            <a href="{% url 'muestraperfil' tienda.id %}"><img src={{tienda.imagen.url}} class="card-img-top"></a>
+            <div class="card-body">
+            <h5 class="card-title">{{tienda.categoria}} "{{tienda.nomEstable}}"</h5>
+            <p class="card-text">{{tienda.descripcion_Estable}} </p>
+            <a href="{% url 'muestraperfil' tienda.id %}" class="btn btn-primary">Ir a perfil</a>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+    
+    {% else %}
+    <div class="container">
+    <div class="alert alert-danger" role="alert">
+        NO HAY ESTABLECIMIENTOS CON ESTE RESULTADO
+      </div>
+      <p>Asegurate de haber escrito bien tu busqueda</p>
+    </div>
+    {% endif %} -->

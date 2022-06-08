@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block titulo %} perfil {% endblock %}
+{% block contenido %}
+ 
+ {% if per %}
+<div class="contenedor__perfil">
+    <div class="foto__portada-perfil">
+       <picture>
+        <img src="{{per.imagen.url}}" alt="" class="card-img" height="95%" id="fotoportada" > 
+    </picture>
+       
+
+    </div>
+   
+
+    <div class="info__perfil2">
+<br>
+            <div>
+              <p class="color__perfil" ><i class="fa-solid fa-shop">  </i> Nombre: {{per.categoria}} "{{per.nomEstable}} "</p>
+              
+            </div>
+
+
+
+            <div>
+              <p class="color__perfil2"><i class="fa-solid fa-globe"></i> Página web: {{per.sitio_web}}</p>
+            </div>
+
+            <div>
+              <p class="color__perfil2"><i class="fa-solid fa-clock"></i> Abierto de: {{per.entrada}} A.M</p>
+            </div>
+    
+
+          <div>
+           <p class="color__perfil2"><i class="fa-solid fa-clock"></i> A: {{per.salida}} P.M</p> 
+          </div>    
+
+            <div>
+              <p class="color__perfil2"><i class="fa-solid fa-phone"></i> Télefono: {{per.telefono}}</p>
+            </div>
+
+            <div>
+             <p class="color__perfil2"><i class="fa-brands fa-whatsapp-square"></i> Whatsapp: {{per.whatsapp}}</p> 
+            </div>
+
+      
+        
+          <input type="tel" class="input__perfil perfilatitud"  placeholder="Longitud"  id="longitud" value="{{per.longitud}}">
+  
+
+ 
+       
+        <input type="tel"  class="input__perfil perfilatitud" required placeholder="Latitud"  id="latitud" value="{{per.latitud}}">
+
+
+
+</div>
+
+    <div class="map" id="map">
+    </div>
+
+
+
+     
+      
+  
+    </div>
+
+
+ {% endif %}
+{% endblock %}

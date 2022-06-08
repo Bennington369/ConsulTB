@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+
+{% block titulo %} Categorias {% endblock %}
+
+{% block contenido %} 
+   
+<div class="container mt-5 mb-5">
+
+    {% for cates in cate %}
+       <a href="{%url 'categoriass' cates.id%}"><button type="submit" class="btn btn-success tamanio mt-3">{{cates.nombre}}</button> </a>
+
+
+    {% endfor %}
+   </div>
+{% endblock %}
+

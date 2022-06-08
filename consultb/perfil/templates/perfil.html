@@ -1,0 +1,163 @@
+{% extends "base2.html" %}
+{% load static %}
+
+
+{% block contenido %}
+
+
+<div class="container offset-col-2 mt-5 xs-12">
+        
+  <form method="POST" action="" enctype="multipart/form-data" class="needs-validation" novalidate>
+     {% csrf_token %}
+    <div class="card ">
+       <div class="card-header ">
+                        CREAR - PERFIL 
+
+        </div>
+        
+        <div class="card-body">
+            <div class="sm-12">
+                <label class="form-label">Tipo de negocio</label>
+                  <select class="form-select" name="categ" required>
+                    <option value="-1">SELECIONE UNA CATEGORIA</option>
+                    {% for neg in cate %}
+                    <option  value="{{ neg.id }}">{{ neg.nombre }}</option>
+                    {% endfor %}
+          
+                </select>
+       
+           
+				  	</div>
+          <p><b>LOS UNICOS DATOS QUE SE PUEDEN SALTAR SON: SITIO WEB, TELEFONO Y WHATSAPP</b></p>
+              <div class="mb-3">
+                  <label class="form-label">Nombre:</label>
+                   <input type="text" class="form-control" name="nombre" required>
+
+                    <div class="invalid-feedback">
+                      Coloca el nombre
+                    </div>
+              </div>
+
+              <div class="mb-3">
+                 <label class="form-label">Descripcion</label>
+                  <input type="text" class="form-control" name="descripcion" maxlength="30" placeholder="Coloca un breve resumen de lo que ofreces" pattern="[a-zA-Z]{1,35}" required>
+                  <div class="invalid-feedback">
+                    Coloca el resumen de no mayor a 35 letras
+              </div>
+
+              <div class="mb-3">
+                  <label class="form-label">Sitio web o Facebook</label>
+                  <input type="text" class="form-control" name="web">
+              </div>
+ 
+
+              <div class="mb-3">
+                  <label class="form-label">Telefono</label>
+                  <input type="text" class="form-control" name="telefono" pattern="[0-9]{10}"  placeholder="Coloca el número sin guión ni espacios">
+                    <div class="invalid-feedback">
+                    Debes colocar 10 números sin espacios o guiones
+                    </div>
+               </div>
+
+             <div class="mb-3 latitudxdxd">
+                <label class="form-label ">Latitud</label>
+                <input id="latitud" type="text" class="form-control" name="lat" required >
+                <div class="invalid-feedback">
+                  Marca el mapa
+                  </div>
+              </div>
+  
+              <div class="mb-3 longitudxdxd">
+                  <label class="form-label ">Longitud</label>
+                   <input id="longitud" type="text" class="form-control" name="lng" required>
+              </div>
+                            
+              <div class="mb-3 longitudxdxd ">
+                <label class="form-label ">Usuario</label>
+                <input type="text" class="form-control" name="userxd" required value="{{user.id}}"></div>
+
+                 <div class="mb-3">
+                    <label class="form-label">Whatsapp</label>
+                    <input type="text" class="form-control" pattern="[0-9]{10}" name="whats"  placeholder="Coloca el número sin guión ni espacios" >
+                    <div class="invalid-feedback">
+                      Debes puedes colocar 10 números sin espacios o guiones
+                    </div>
+                 </div>
+ 
+                 <div class="mb-3 ">
+        
+                   <label for="file" class="form-label" >Subir foto de perfil</label>
+                   <input accept="image/jpg,image/jpeg,image/png" class="form-control" type="file" name="img" id="img" required>
+                   <div class="invalid-feedback">
+                             Sube tu foto
+                   </div>
+                </div>
+
+                <div class="mb-3">
+        
+                   <label  class="form-label" >Abierto de:</label>
+                   <input class="form-control" type="time" name="hora1" required >
+                    <div class="invalid-feedback">
+                     Coloca el horario
+                    </div>
+                 </div>
+
+                 <div class="mb-3">
+                    <label class="form-label" >Cerrado a a las:</label>
+                     <input class="form-control" type="time" name="hora2" required >
+                    <div class="invalid-feedback">
+                      Coloca el horario
+                    </div>
+                  </div>
+
+
+
+        </div>
+                    
+         <div class="card-footer">
+          <p class="p__mapa"><b> NO OLVIDES MARCAR TU UBICACION</b></p>         
+            <button type="submit" class="btn btn-success ml-2">GUARDAR</button>
+            <a class="btn btn-danger" href="{% url 'inicio' %}">CANCELAR</a>                       
+             <input type="reset" class="btn btn-warning" value="LIMPIAR" >
+                    
+          </div>
+    </div>
+  </form>
+</div>
+
+    <div class="container  offset-col-2 mb-5">
+      <p><b> Por favor, arrastra el marcador azul en donde está ubicado tu negocio ya que si no lo haces no se guardará tu registro </b></p> 
+      
+      <div class="map" id="map"></div>
+
+   
+   </div>
+
+
+   <script>
+
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+   </script>
+
+
+
+
+
+{% endblock %}

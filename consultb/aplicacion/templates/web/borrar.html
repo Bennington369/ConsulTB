@@ -1,0 +1,27 @@
+
+{% extends "base2.html" %}
+
+{% block contenido %} 
+<div class="modal" tabindex="-1" style="display:block; position:relative;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Borrado de Perfil</h5>
+          <a href="{% url 'inicio' %}" class="btn-close" aria-label="Close">
+          </a>
+        </div>
+        <div class="modal-body">
+          <p>¿Esta seguro de borrar el Perfil <span class="fw-bold text-info">{{ perfil.nomEstable }}</span>  ?</p>
+        </div>
+        <div class="modal-footer">
+  
+          <a href="{% url 'borrando' perfil.id  %}" class="btn btn-success">SI</a>
+          <a href="{% url 'inicio' %}" class="btn btn-warning">NO</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %} 

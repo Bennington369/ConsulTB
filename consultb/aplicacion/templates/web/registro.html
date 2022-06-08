@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block titulo %} Registro {% endblock %}
+
+
+
+{% block contenido %}
+
+
+<div class="container">
+
+
+	<form action="" method="post" class="formuzd">{% csrf_token %}
+
+
+		{{form}}
+
+		
+		<button type="submit" class="btn btn-primary botonregistro">Registrarse</button>
+
+	</form>
+	
+</div>
+
+{%endblock%}
+

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block titulo %} Resultados Categorias {% endblock %}
+{% block contenido %}
+
+<div class="container mt-2 mb-5" >
+    <div class="row row-cols-auto">
+        {% if tiendas %}
+        {% for tienda in tiendas %}
+        <div class=" col-sm-8 col-md-4 col-xs-12">
+          
+            <div class="card text-center border-info mt-2 " >
+              
+                <div class="card " >
+
+                    <a href="{% url 'muestraperfil' tienda.id %}"><img src={{tienda.imagen.url}} class="card-img-top" ></a>
+                    <div class="card-body card-bodyxd">
+                    <h5 class="card-title">{{tienda.categoria}} "{{tienda.nomEstable}}"</h5>
+
+                  
+                    <p class="card-text">{{tienda.descripcion_Estable}} </p>
+              
+
+                    <a href="{% url 'muestraperfil' tienda.id %}" class="btn btn-primary">Ir a perfil</a>
+                    </div>
+                </div>
+
+
+              
+    
+
+
+        </div>
+  
+       
+    </div>
+    {% endfor %}
+
+    {% else %}
+<div class="container ">
+    <div class="alert alert-danger " role="alert">
+    NO HAY ESTABLECIMIENTOS EN ESTA CATEGORIA
+    </div>
+
+
+    {% endif %}
+    </div>
+    
+</div>
+</div>
+
+{% endblock %}
